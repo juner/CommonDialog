@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Copyright>MIT</Copyright>
+    <PackageTags>CommonDialog;DI</PackageTags>
+    <PackageProjectUrl>https://github.com/junersproject/CommonDialog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/junersproject/CommonDialog.git</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props','$(MSBuildThisFileDirectory)../'))"  />
+</Project>

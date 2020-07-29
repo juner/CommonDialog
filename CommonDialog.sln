@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30223.230
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDialog.Core", "src\CommonDialog.Core\CommonDialog.Core.csproj", "{8D65F463-BFBE-42E8-926F-E2D154EF8911}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDialog.WPF", "src\CommonDialog.WPF\CommonDialog.WPF.csproj", "{F240174D-F5EB-4058-9FF3-EDD7C73D557B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDialog.WPF", "src\CommonDialog.WPF\CommonDialog.WPF.csproj", "{F240174D-F5EB-4058-9FF3-EDD7C73D557B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDialog.WinForms", "src\CommonDialog.WinForms\CommonDialog.WinForms.csproj", "{3C0F5585-2BFB-4739-BFED-EF466D7EA49F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDialog.WinForms", "src\CommonDialog.WinForms\CommonDialog.WinForms.csproj", "{3C0F5585-2BFB-4739-BFED-EF466D7EA49F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDialog.WindowsAPICodePack", "src\CommonDialog.WindowsAPICodePack\CommonDialog.WindowsAPICodePack.csproj", "{1221551E-EF6B-47D7-AC8A-5A57A67D10BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDialog.WindowsAPICodePack", "src\CommonDialog.WindowsAPICodePack\CommonDialog.WindowsAPICodePack.csproj", "{1221551E-EF6B-47D7-AC8A-5A57A67D10BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49858B56-CF53-4551-A001-DA0995916BCE}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		src\Directory.Build.targets = src\Directory.Build.targets
 		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
 	EndProjectSection
 EndProject
 Global

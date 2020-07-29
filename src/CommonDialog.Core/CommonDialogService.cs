@@ -22,6 +22,6 @@ namespace CommonDialog.Core
             return Executers.First();
         }
 
-        public bool ShowDialog(ICommonDialogSettings Settings) => GetExecuter(Settings).ShowDialog(Settings);
+        public bool? ShowDialog(ICommonDialogSettings Settings) => GetExecuter(Settings).ShowDialog(Settings);
     }
 }

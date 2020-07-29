@@ -7,13 +7,13 @@ namespace CommonDialog.WinForms
     {
         public bool UseDialog(Core.ICommonDialogSettings Settings) => Settings is Core.IMessageBoxSettings;
         public bool IsPrecedence(Core.ICommonDialogSettings Settings) => Settings is IMessageBoxSettings;
-        public bool ShowDialog(Core.ICommonDialogSettings Settings)
-        => Settings switch
+        public bool? ShowDialog(Core.ICommonDialogSettings Settings) => Settings switch
         {
             IMessageBoxSettings s => ShowDialog(s),
-            Core.IMessageBoxSettings s => ShowDialog(new WrapedMessageSettings(s)),
+            Core.IMessageBoxSettings s => ShowDialog(Wrap(s)),
             _ => throw new ArgumentException(nameof(Settings) + " is not IMessageBoxSettings", nameof(Settings)),
         };
+        public IMessageBoxSettings Wrap(Core.IMessageBoxSettings Settings) => new WrapedMessageSettings(Settings);
         public bool ShowDialog(IMessageBoxSettings Settings)
         {
             Settings.Result = Execute(Settings);

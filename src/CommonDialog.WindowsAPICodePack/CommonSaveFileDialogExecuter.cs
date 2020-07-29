@@ -1,66 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 
-namespace CommonDialog.WPF
+namespace CommonDialog.WindowsAPICodePack
 {
-    public class CommonSaveFileDialogExecuter : Core.ICommonDialogExecuter, Core.ICommonDialogPrecedence
+    public class CommonSaveFileDialogExecuter : CommonFileDialogExecuter<ICommonSaveFileDialogSettings, Core.ICommonSaveFileDialogSettings>
     {
-        public bool IsPrecedence(Core.ICommonDialogSettings Settings) => Settings is ICommonSaveFileDialogSettings;
-        public bool UseDialog(Core.ICommonDialogSettings Settings) => Settings is ICommonSaveFileDialogSettings;
+        public override CommonFileDialog Create(ICommonSaveFileDialogSettings Settings)
+        {
+            CommonSaveFileDialog? Dialog = null;
+            try
+            {
+                Dialog = new CommonSaveFileDialog
+                {
+                    AddToMostRecentlyUsedList = Settings.AddToMostRecentlyUsedList,
+                    AllowPropertyEditing = Settings.AllowPropertyEditing,
+                    AlwaysAppendDefaultExtension = Settings.AlwaysAppendDefaultExtension,
+                    CreatePrompt = Settings.CreatePrompt,
+                    DefaultDirectory = Settings.DefaultDirectory,
+                    DefaultExtension = Settings.DefaultExtension,
+                    DefaultFileName = Settings.DefaultFileName,
+                    EnsureFileExists = Settings.EnsureFileExists,
+                    EnsurePathExists = Settings.EnsurePathExists,
+                    EnsureReadOnly = Settings.EnsureReadOnly,
+                    EnsureValidNames = Settings.EnsureValidNames,
+                    InitialDirectory = Settings.InitialDirectory,
+                    IsExpandedMode = Settings.IsExpandedMode,
+                    NavigateToShortcut = Settings.NavigateToShortcut,
+                    OverwritePrompt = Settings.OverwritePrompt,
+                    ShowHiddenItems = Settings.ShowHiddenItems,
+                    Title = Settings.Title,
+                };
+                foreach (var (RowDisplayName, ExtensionsList) in Settings.Filters)
+                    Dialog.Filters.Add(new CommonFileDialogFilter(RowDisplayName, ExtensionsList));
+                return Dialog;
+            }
+            catch (Exception)
+            {
+                if (Dialog is IDisposable)
+                    Dialog.Dispose();
+                throw;
+            }
+        }
 
-        public bool? ShowDialog(Core.ICommonDialogSettings Settings)
+        protected override ICommonSaveFileDialogSettings Wrap(Core.ICommonSaveFileDialogSettings Settings)
         {
             throw new NotImplementedException();
         }
-
-    }
-    public class CommonSaveFileDialogSettings : ICommonSaveFileDialogSettings
-    {
-        public bool AlwaysAppendDefaultExtension => throw new NotImplementedException();
-
-        public bool CreatePrompt => throw new NotImplementedException();
-
-        public bool IsExpandedMode => throw new NotImplementedException();
-
-        public bool OverwritePrompt => throw new NotImplementedException();
-
-        public Window? Window => throw new NotImplementedException();
-
-        public IntPtr OwnerWindowHandle => throw new NotImplementedException();
-
-        public bool ShowPlacesList => throw new NotImplementedException();
-
-        public string DefaultDirectory => throw new NotImplementedException();
-
-        public string DefaultExtension => throw new NotImplementedException();
-
-        public string DefaultFileName => throw new NotImplementedException();
-
-        public bool EnsureFileExists => throw new NotImplementedException();
-
-        public bool EnsurePathExists => throw new NotImplementedException();
-
-        public bool EnsureReadOnly => throw new NotImplementedException();
-
-        public string Title => throw new NotImplementedException();
-
-        public bool EnsureValidNames => throw new NotImplementedException();
-
-        public bool AllowPropertyEditing => throw new NotImplementedException();
-
-        public IList<(string RawDisplayName, string ExtensionList)> Filters => throw new NotImplementedException();
-
-        public string InitialDirectory => throw new NotImplementedException();
-
-        public bool NavigateToShortcut => throw new NotImplementedException();
-
-        public int SelectedFileTypeIndex => throw new NotImplementedException();
-
-        public bool ShowHiddenItems => throw new NotImplementedException();
-
-        public string FileName => throw new NotImplementedException();
-
-        public bool AddToMostRecentlyUsedList => throw new NotImplementedException();
     }
 }

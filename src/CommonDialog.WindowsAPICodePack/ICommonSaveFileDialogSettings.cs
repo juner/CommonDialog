@@ -1,4 +1,4 @@
-﻿namespace CommonDialog.WPF
+﻿namespace CommonDialog.WindowsAPICodePack
 {
     public interface ICommonSaveFileDialogSettings : ICommonFileDialogSettings
     {

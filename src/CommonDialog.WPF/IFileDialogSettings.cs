@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace CommonDialog.WPF
 {
@@ -9,7 +8,7 @@ namespace CommonDialog.WPF
         bool AddExtension { get; }
         bool CheckFileExists { get; }
         bool CheckPathExists { get; }
-        IList<FileDialogCustomPlace> CustomPlaces { get; set; }
+        IList<FileDialogCustomPlace> CustomPlaces { get; }
         string DefaultExt { get; }
         bool DereferenceLinks { get; }
         string FileName { set; }

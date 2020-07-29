@@ -1,19 +1,16 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Windows;
 
 namespace CommonDialog.WPF
 {
-    public class SaveFileDialogExecuter : Core.ICommonDialogExecuter, Core.ICommonDialogPrecedence
+    public class SaveFileDialogExecuter : FileDialogExecuter<ISaveFileDialogSettings, Core.ICommonSaveFileDialogSettings, SaveFileDialog>
     {
-        public bool IsPrecedence(Core.ICommonDialogSettings Settings) => Settings is ISaveFileSettings;
-        public bool UseDialog(Core.ICommonDialogSettings Settings) => Settings is ISaveFileSettings;
-        public bool? ShowDialog(Core.ICommonDialogSettings Settings) => Settings switch
+        protected override ISaveFileDialogSettings Wrap(Core.ICommonSaveFileDialogSettings Settings)
         {
-            ISaveFileSettings s => ShowDialog(s),
-            _ => throw new ArgumentException(nameof(Settings) + " is no match."),
-        };
-        public bool? ShowDialog(ISaveFileSettings Settings)
+            throw new NotImplementedException();
+        }
+
+        public override SaveFileDialog Create(ISaveFileDialogSettings Settings)
         {
             var Dialog = new SaveFileDialog
             {
@@ -32,17 +29,16 @@ namespace CommonDialog.WPF
             };
             foreach (var CustomPlace in Settings.CustomPlaces)
                 Dialog.CustomPlaces.Add(CustomPlace);
-            var Result = Settings switch
-            {
-                { Owner: Window Owner } => Dialog.ShowDialog(Owner),
-                _ => Dialog.ShowDialog(),
-            };
+            return Dialog;
+        }
+
+        public override void SetSettings(ISaveFileDialogSettings Settings, SaveFileDialog Dialog)
+        {
             Settings.SafeFileName = Dialog.SafeFileName;
             Settings.SafeFileNames = Dialog.SafeFileNames;
             Settings.FileName = Dialog.FileName;
             Settings.FileNames = Dialog.FileNames;
             Settings.FilterIndex = Dialog.FilterIndex;
-            return Result;
         }
     }
 }

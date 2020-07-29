@@ -10,7 +10,7 @@ namespace CommonDialog.Core
         /// </summary>
         /// <param name="Settings"></param>
         /// <returns></returns>
-        bool ShowDialog(ICommonDialogSettings Settings);
+        bool? ShowDialog(ICommonDialogSettings Settings);
         ICommonDialogExecuter GetExecuter(ICommonDialogSettings Settings);
     }
 }

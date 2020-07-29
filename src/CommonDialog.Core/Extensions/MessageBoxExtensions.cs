@@ -10,7 +10,8 @@ namespace CommonDialog.Core.Extensions
             => DialogService.ShowMessage(Message, string.Empty);
         public static MessageBoxResult ShowMessage(this ICommonDialogService DialogService, string Message, string Title, MessageBoxButton Button = default, MessageBoxImage Icon = default, MessageBoxResult DefaultResult = default, MessageBoxOptions Options = default)
 
-            => DialogService.ShowMessage(new MessageBoxSettings {
+            => DialogService.ShowMessage(new MessageBoxSettings
+            {
                 Title = Title,
                 Message = Message,
                 Button = Button,

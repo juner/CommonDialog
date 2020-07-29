@@ -11,7 +11,7 @@ namespace CommonDialog.WinForms
         /// <summary>
         /// The text to display in the message box.
         /// </summary>
-        string Text { get;}
+        string Text { get; }
         /// <summary>
         /// The text to display in the title bar of the message box.
         /// </summary>

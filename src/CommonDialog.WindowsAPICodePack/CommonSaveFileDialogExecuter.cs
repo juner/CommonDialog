@@ -3,7 +3,8 @@ using System;
 
 namespace CommonDialog.WindowsAPICodePack
 {
-    public class CommonSaveFileDialogExecuter : CommonFileDialogExecuter<ICommonSaveFileDialogSettings, Core.ICommonSaveFileDialogSettings>
+    public class CommonSaveFileDialogExecuter
+        : CommonFileDialogExecuter<ICommonSaveFileDialogSettings, Core.ICommonSaveFileDialogSettings>
     {
         public override CommonFileDialog Create(ICommonSaveFileDialogSettings Settings)
         {
@@ -43,8 +44,6 @@ namespace CommonDialog.WindowsAPICodePack
         }
 
         protected override ICommonSaveFileDialogSettings Wrap(Core.ICommonSaveFileDialogSettings Settings)
-        {
-            throw new NotImplementedException();
-        }
+            => new WrappedCommonSaveFileDialogSettings(Settings);
     }
 }

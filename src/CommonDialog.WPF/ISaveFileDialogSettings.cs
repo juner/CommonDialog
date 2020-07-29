@@ -1,8 +1,4 @@
-﻿using Microsoft.Win32;
-using System.Collections.Generic;
-using System.Windows;
-
-namespace CommonDialog.WPF
+﻿namespace CommonDialog.WPF
 {
     public interface ISaveFileDialogSettings : IFileDialogSettings
     {

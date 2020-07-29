@@ -6,9 +6,7 @@ namespace CommonDialog.WPF
     public class SaveFileDialogExecuter : FileDialogExecuter<ISaveFileDialogSettings, Core.ICommonSaveFileDialogSettings, SaveFileDialog>
     {
         protected override ISaveFileDialogSettings Wrap(Core.ICommonSaveFileDialogSettings Settings)
-        {
-            throw new NotImplementedException();
-        }
+            => new WrappedSaveFileDialogSettings(Settings);
 
         public override SaveFileDialog Create(ISaveFileDialogSettings Settings)
         {
